@@ -1,129 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>JS + CSS Clock</title>
-</head>
-<body>
-
-  
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS + CSS Clock</title>
+  </head>
+  <body>
     <div class="clock">
       <div class="clock-face">
         <div class="hand hour-hand"></div>
         <div class="clockcenter"></div>
         <div class="hand min-hand"></div>
-        <div class="hand second-hand" style="transform:rotate(60deg);"></div>
+        <div class="hand second-hand" style="transform: rotate(60deg)"></div>
       </div>
     </div>
 
-
-  <style>
-    
-    html {
-      background: #018DED url(https://papers.co/wallpaper/papers.co-vr76-dessert-bw-dark-nature-pattern-25-wallpaper.jpg);
-      font-family: 'helvetica neue';
-      text-align: center;
-      font-size: 10px;
-    }
-
-
-    body {
-      margin: 0;
-      font-size: 2rem;
-      display: flex;
-      flex: 1;
-      min-height: 100vh;
-      align-items: center;
-    }
-    .clock {
-      width: 30rem;
-      height: 30rem;
-      border: 20px solid white;
-      border-radius: 50%;
-      margin: 50px auto;
-      position: relative;
-      padding: 2rem;
-      box-shadow:
-        0 0 0 4px rgba(0,0,0,0.1),
-        inset 0 0 0 3px #EFEFEF,
-        inset 0 0 10px black,
-        0 0 10px rgba(0,0,0,0.2);
-    }
-
-    .clock-face {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transform: translateY(-3px); 
-    }
-
-    .hand {
-      position: absolute;
-      transform-origin: 100%;
-    }
-
-    .second-hand {
-      position: absolute;
-      width: 50%;
-      height: 6px;
-      background: red;
-      top: 50%;
-    }
-    .min-hand {
-      position: absolute;
-      width: 50%;
-      height: 6px;
-      background: whitesmoke;
-      top: 50%;
-    }
-    .hour-hand {
-      width: 30%;
-      height: 9px;
-      background: white;
-      top: 50%;
-      left:20%;
-    }
-
-  </style>
-  <script>
-    const hand = document.querySelector('.hand');
-    const secondHand = document.querySelector('.second-hand');
-    const minsHand = document.querySelector('.min-hand');
-    const hourHand = document.querySelector('.hour-hand');
-    function setDate(){
-      const now = new Date();
-      const seconds = now.getSeconds();
-      const secondsDegrees = ((seconds / 60)*360)+90;
-
-      if(secondHand.style.transform==="rotate(444deg)"){
-        console.log(`this is 59secs ${secondHand.style.transition}`);
-        console.log(`this is 59secs ${secondHand.style.transitionTimingFunction}`);
-        secondHand.style.transitionTimingFunction="steps(1,jump-end";
-        secondHand.style.transition= "0s";
-        secondHand.style.transform = `rotate(${84}deg`;
-
-
+    <style>
+      html {
+        background: #018ded
+          url(https://papers.co/wallpaper/papers.co-vr76-dessert-bw-dark-nature-pattern-25-wallpaper.jpg);
+        font-family: 'helvetica neue';
+        text-align: center;
+        font-size: 10px;
       }
-        secondHand.style.transform = `rotate(${secondsDegrees}deg`;
-        secondHand.style.transition= "all 0.5s";
-        secondHand.style.transitionTimingFunction="cubic-bezier(0.1, 2.7, 0.58, 1)";
-      
-      const minutes = now.getMinutes();
-      const minDegrees = ((minutes / 60)*360)+90;
-      minsHand.style.transform = `rotate(${minDegrees}deg)`;
 
-      const hours = now.getHours();
-      const hourDegrees = ((hours / 12)*360)+((minutes/60)*30)+90;
-      hourHand.style.transform = `rotate(${hourDegrees}deg)`;
-      console.log();
-      
-      console.log(`time:${hours}:${minutes}:${seconds}`);
-    }
+      body {
+        margin: 0;
+        font-size: 2rem;
+        display: flex;
+        flex: 1;
+        min-height: 100vh;
+        align-items: center;
+      }
+      .clock {
+        width: 30rem;
+        height: 30rem;
+        border: 20px solid white;
+        border-radius: 50%;
+        margin: 50px auto;
+        position: relative;
+        padding: 2rem;
+        box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #efefef,
+          inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2);
+      }
 
-    setInterval(setDate,1000);
+      .clock-face {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform: translateY(-3px);
+      }
 
-    setDate();
+      .hand {
+        position: absolute;
+        transform-origin: 100%;
+      }
 
-  </script>
-</body>
+      .second-hand {
+        position: absolute;
+        width: 50%;
+        height: 6px;
+        background: red;
+        top: 50%;
+      }
+      .min-hand {
+        position: absolute;
+        width: 50%;
+        height: 6px;
+        background: whitesmoke;
+        top: 50%;
+      }
+      .hour-hand {
+        width: 30%;
+        height: 9px;
+        background: white;
+        top: 50%;
+        left: 20%;
+      }
+    </style>
+    <script>
+      const hand = document.querySelector('.hand')
+      const secondHand = document.querySelector('.second-hand')
+      const minsHand = document.querySelector('.min-hand')
+      const hourHand = document.querySelector('.hour-hand')
+      function setDate() {
+        const now = new Date()
+        const seconds = now.getSeconds()
+        const secondsDegrees = (seconds / 60) * 360 + 90
+
+        if (secondHand.style.transform === 'rotate(444deg)') {
+          console.log(`this is 59secs ${secondHand.style.transition}`)
+          console.log(
+            `this is 59secs ${secondHand.style.transitionTimingFunction}`
+          )
+          secondHand.style.transitionTimingFunction = 'steps(1,jump-end'
+          secondHand.style.transition = '0s'
+          secondHand.style.transform = `rotate(${84}deg`
+        }
+        secondHand.style.transform = `rotate(${secondsDegrees}deg`
+        secondHand.style.transition = 'all 0.5s'
+        secondHand.style.transitionTimingFunction =
+          'cubic-bezier(0.1, 2.7, 0.58, 1)'
+
+        const minutes = now.getMinutes()
+        const minDegrees = (minutes / 60) * 360 + 90
+        minsHand.style.transform = `rotate(${minDegrees}deg)`
+
+        const hours = now.getHours()
+        const hourDegrees = (hours / 12) * 360 + (minutes / 60) * 30 + 90
+        hourHand.style.transform = `rotate(${hourDegrees}deg)`
+        console.log()
+
+        console.log(`time:${hours}:${minutes}:${seconds}`)
+      }
+
+      setInterval(setDate, 1000)
+
+      setDate()
+    </script>
+  </body>
 </html>
